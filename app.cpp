@@ -1,5 +1,6 @@
 #include <iostream>
-#include <vector>
+#include "functions.h"
+
 
 class Book {
     private:
@@ -150,31 +151,8 @@ class Cliente {
 
 };
 
-void bienvenida() {
-    std::cout << "******** " <<"Bienvenido a la libreria de libros!" << " ********" << std::endl;
-    std::cout << "Donde solo vendemos libros y mas libros y otros cuantos libros" << std::endl;
-    std::cout << "---------------------------------------------------------------------------------\n";
-    std::cout << "Para interactuar con el menu, simplemente escrbe el numero del menu al que quieres acceder" << std::endl;
-}
-
-void iniciarSesion() {
-    std::string username;
-    std::string password;
-    std::cout << "Escribe tu nombre de usuario: ";
-    std::cin >> username;
-    std::cout << "\nEscribe tu contraseña: ";
-    std::cin >> password;
-    std::cout << std::endl;
-}
-
-void registrarse() {
-
-}
-
-void opciones() {
-    std::cout << "1. ";
-}
-
 int main(void) {
     bienvenida();
+    opcionesMain();
+    // opcionesCarrito();
 }
