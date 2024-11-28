@@ -191,6 +191,12 @@ class Store {
         
         void createClient(std::string username, std::string password) {
             Cliente(username, password);
+        }
+
+        const std::vector<Cliente> & getClients() {
+            return this->clientes;
+        }
+
 };
 
 #endif
