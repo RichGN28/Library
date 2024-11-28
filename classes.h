@@ -2,6 +2,7 @@
 #define CLASSES_H
 #include <iostream>
 #include <vector>
+#include <map>
 
 class Book {
     private:
@@ -156,9 +157,40 @@ class Cliente {
 
 };
 
+class Storage {
+    private:
+        int maximum_capacity = 100;
+        std::map<Book, int> valve;
+        std::string genero;
+    public:
+        Storage(std::string genero, int maximum_capacity = 100) {
+            this->genero = genero;
+            this->maximum_capacity = maximum_capacity;
+        }
+        void emptyStorage() {
+            valve.clear();
+        }
+        const std::map<Book, int> & getValve() {
+            return valve;
+        }
+        const std::string getGenero() {
+            return genero;
+        }
+};
+
 class Store {
     private:
-
+    //Think about a store method
+        std::string name;
+        std::vector<Storage> almacen;
+        std::vector<Cliente> clientes;
     public:
+        Store() {
+            name = "Libreria de libros";
+        }
+        
+        void createClient(std::string username, std::string password) {
+            Cliente(username, password);
 };
+
 #endif
