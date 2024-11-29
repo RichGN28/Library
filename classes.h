@@ -5,7 +5,19 @@
 #include <map>
 #include "functions.h"
 
-
+//CHECAR PORQUE NO LO PUEDO PONER DENTRO DE MI ARCHIVO DE FUNCIONES AHHH
+std::vector<std::string> getCredentials() {
+    std::vector<std::string> credentials;
+    std::string username;
+    std::string password;
+    std::cout << "Escribe tu nombre de usuario: ";
+    std::cin >> username;
+    std::cout << "\nEscribe tu contraseña: " << std::endl;
+    std::cin >> password;
+    credentials.push_back(username);
+    credentials.push_back(password);
+    return credentials;
+}
 
 class Book {
     private:
@@ -128,6 +140,14 @@ class Cliente {
         std::vector<Book> owned;
 
     public:
+        const std::string & getUsername() {
+            return username;
+        }
+        bool validatePassword(std::string pass) {
+            return pass == password;
+        }
+
+
         Cliente(std::string username, std::string password) {
             this->username = username;
             this->password = password;
@@ -200,17 +220,36 @@ class Store {
             name = "Libreria de libros";
         }
         
-        void addClient() {
-            std::string username;
-            std::string password;
-            std::cout << "Escribe tu nombre de usuario: ";
-            std::cin >> username;
-            std::cout << "\nEscribe tu contraseña: ";
-            std::cin >> password;
-            std::cout << std::endl;
-    
-            Cliente user(username, password);
+        bool registrarse() {
+            std::vector<std::string> credentials;
+            credentials = getCredentials();
+            std::cout << "Escribe tu contraseña nuevamente" << std::endl;
+            
+            std::string password2;
+            std::cin >> password2;
+            
+            if (password2 != credentials[1]) {
+                std::cout << "Las contrasenas no coinciden" << std::endl;
+                return false;
+            }
+            Cliente user(credentials[0], credentials[1]);
             clientes.push_back(user);
+            return true;
+        }
+
+        bool login(std::string username, std::string password) {
+            // Check if my vector contains the inputs
+            int index = 0;
+            for (int i = 0, size = clientes.size(); i < size; i++) {
+                if (clientes[i].getUsername() == username) {
+                    if(clientes[i].validatePassword(password)) {
+                        std::cout << "Login satisfactorio";
+                        return true;
+                    }
+                }
+            }
+            std::cout << "No se encontro el perfil" << std::endl;
+            return false;
         }
 
         const std::vector<Cliente> & getClients() {

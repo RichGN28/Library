@@ -12,9 +12,6 @@ void bienvenida() {
     std::cout << "Para interactuar con el menu, simplemente escrbe el numero del menu al que quieres acceder" << std::endl;
 }
 
-void registrarse() {
-
-}
 
 void showText(std::vector<std::string> text) {
     for (int i = 0, size = text.size(); i < size; i++) {
@@ -22,7 +19,18 @@ void showText(std::vector<std::string> text) {
     }
 }
 
-
+// std::vector<std::string> getCredentials() {
+//     std::vector<std::string> credentials;
+//     std::string username;
+//     std::string password;
+//     std::cout << "Escribe tu nombre de usuario: ";
+//     std::cin >> username;
+//     std::cout << "\nEscribe tu contraseña: " << std::endl;
+//     std::cin >> password;
+//     credentials.push_back(username);
+//     credentials.push_back(password);
+//     return credentials;
+// }
 
 void opcionesMain() {
     std::vector<std::string> text = {"Iniciar Sesion"};
