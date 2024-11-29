@@ -22,22 +22,10 @@ void showText(std::vector<std::string> text) {
     }
 }
 
-Cliente iniciarSesion() {
-    std::string username;
-    std::string password;
-    std::cout << "Escribe tu nombre de usuario: ";
-    std::cin >> username;
-    std::cout << "\nEscribe tu contraseña: ";
-    std::cin >> password;
-    std::cout << std::endl;
-    
-    Cliente user(username, password);
-    return user;
-}
+
 
 void opcionesMain() {
-    std::vector<std::string> text = {"Ver mi perfil", "Buscar libros", 
-    "Ir a carrito de compras", "Ver libros comprados", "Logout"};
+    std::vector<std::string> text = {"Iniciar Sesion"};
     showText(text);
 }
 

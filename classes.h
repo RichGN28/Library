@@ -3,6 +3,9 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include "functions.h"
+
+
 
 class Book {
     private:
@@ -132,7 +135,9 @@ class Cliente {
         }
 
         void showCliente() {
-            std::cout << "hola\n";
+            std::cout << "Usuario: " << username << std::endl;
+            std::cout << "Balance: " << balance << std::endl;
+            showBooksOwned();
         }
 
         void buyBooks() {
@@ -150,12 +155,18 @@ class Cliente {
         }
 
         void showBooksOwned() {
+            int size = owned.size();
+            if (!size) {
+                std::cout << "No books owned, buy some books!!" << std::endl;
+                return;
+            }
             for (auto it = owned.begin(); it != owned.end(); it++) {
                 it->showBook();
             }
         }
 
 };
+
 
 class Storage {
     private:
@@ -189,14 +200,38 @@ class Store {
             name = "Libreria de libros";
         }
         
-        void createClient(std::string username, std::string password) {
-            Cliente(username, password);
+        void addClient() {
+            std::string username;
+            std::string password;
+            std::cout << "Escribe tu nombre de usuario: ";
+            std::cin >> username;
+            std::cout << "\nEscribe tu contraseña: ";
+            std::cin >> password;
+            std::cout << std::endl;
+    
+            Cliente user(username, password);
+            clientes.push_back(user);
         }
 
         const std::vector<Cliente> & getClients() {
             return this->clientes;
         }
+        void showClients() {
+            int size = clientes.size();
+            if (!size) {
+                std::cout << "No hay clientes actualmente :(" << std::endl;
+                return;
+            }
+            std::cout << "***** CLIENTES ACTUALES *****" << std::endl;
+            for (int i = 0; i < size; i++) {
+                clientes[i].showCliente();
+                std::cout << "-*-*-*-*-*-*-*-*" << std::endl;
+            }
+        }
 
 };
+
+
+
 
 #endif
