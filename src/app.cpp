@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "functions.h"
+#include "helpers.h"
 #include "classes.h"
 
 int main(void) {
@@ -24,8 +24,7 @@ int main(void) {
             }
             break;
         case 2:
-            store.registrarse() ? std::cout << "Registrado Correctamente" : 
-            std::cout << "Registro invalido" << std::endl;
+            store.registrarse();
 
             break;
         
@@ -35,23 +34,4 @@ int main(void) {
         }
     }
 
-    // while(running) {
-    //     opcionesMain();
-    //     std::cout << "Type -1 to quit" << std::endl;
-    //     std::cin >> option;
-    //     switch (option) {
-    //     case -1:
-    //         running = false;
-    //         break;
-    //     case 1:
-    //         break;
-        
-    //     default:
-    //         std::cout << "Not valid" << std::endl;
-    //         break;
-    //     }
-        
-
-    // }
-    // store.showClients();
 }
