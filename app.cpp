@@ -10,8 +10,7 @@ int main(void) {
     bienvenida();
 
     while(true) {
-        std::vector<std::string> text;
-        text = {"Login", "Register"};
+        std::vector<std::string> text = {"Login", "Register"};
         showText(text);
         std::cin >> option;
         std::vector <std::string> credentials;

@@ -1,6 +1,3 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
-
 #include <vector>
 #include <iostream>
 
@@ -227,4 +224,3 @@ const std::string Storage::getGenero() {
                 delimiter("-*", 50);
             }
         }
-#endif
