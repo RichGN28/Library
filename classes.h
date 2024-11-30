@@ -5,7 +5,7 @@
 #include <map>
 #include "functions.h"
 
-//CHECAR PORQUE NO LO PUEDO PONER DENTRO DE MI ARCHIVO DE FUNCIONES AHHH
+// CHECAR PORQUE NO LO PUEDO PONER DENTRO DE MI ARCHIVO DE FUNCIONES AHHH
 std::vector<std::string> getCredentials() {
     std::vector<std::string> credentials;
     std::string username;
@@ -184,7 +184,6 @@ class Cliente {
                 it->showBook();
             }
         }
-
 };
 
 
@@ -269,8 +268,4 @@ class Store {
         }
 
 };
-
-
-
-
 #endif
