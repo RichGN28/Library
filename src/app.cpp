@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "helpers.h"
-#include "classes.h"
+#include "Store.h"
 
 void userApp(Cliente & user);
 void MainApp(Cliente & user);

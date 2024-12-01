@@ -1,6 +1,7 @@
 #include <iostream>
 #include "helpers.h"
-#include "classes.h"
+
+#include "Store.h"
 
 Book createBook() {
     std::cout << "************" << "CREANDO NUEVO LIBRO" << "************" << std::endl;

@@ -13,8 +13,13 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 # Add source files (e.g., main.cpp, other_file.cpp)
 set(SOURCE_FILES 
     src/app.cpp
-    src/classes.cpp
+    src/Book.cpp
+    src/Cart.cpp
+    src/Cliente.cpp
+    src/Storage.cpp
+    src/Store.cpp
     src/helpers.cpp
+
 )
 
 # Define the executable and link source files to it
