@@ -92,6 +92,10 @@ void adminApp(Cliente & user) {
                 break;
             case 3:
                 store.showEntireAlmacen();
+                break;
+            case 4:
+                store.showClients();
+                break;
             default:
                 std::cout << "Opcion no valida, inenta de nuevo" << std::endl;
                 break;
@@ -112,6 +116,8 @@ void userApp(Cliente & user) {
 
         switch (option)
         {
+        case -1:
+            return;
         case 1:
             delimiter("-", 75);
             user.showCliente();
