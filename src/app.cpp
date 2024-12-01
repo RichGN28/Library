@@ -17,7 +17,7 @@ int main(void) {
     while(true) {
         std::vector<std::string> text = {"Login", "Register"};
         showText(text);
-        std::cin >> option;
+        int option = choose();
         std::vector <std::string> credentials;
         switch (option)
         {
@@ -88,7 +88,6 @@ void adminApp(Cliente & user) {
                 // Agregar libros
                 store.expandInventory();
                 break;
-
             case 2:
                 store.createNewValve();
                 break;
@@ -136,6 +135,8 @@ void userApp(Cliente & user) {
             break;
         case 4:
             // Ir a carrito
+            carritoApp();
+            break;
         default:
             
             break;
@@ -145,7 +146,6 @@ void userApp(Cliente & user) {
     }
 
 }
-
 
 void carritoApp() {
     while (true) {
