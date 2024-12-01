@@ -4,9 +4,6 @@
 #include "helpers.h"
 #include "Store.h"
 
-
-
-
 // STORE
 Store::Store() {
     name = "Libreria de libros";
@@ -56,7 +53,7 @@ const std::vector<Cliente> & Store::getClients() {
     return this->clientes;
 }
 
-const Cliente & Store::getCliente(std::string username, std::string password) {
+Cliente & Store::getCliente(std::string username, std::string password) {
     int index = 0;
     for (int i = 0, size = clientes.size(); i < size; i++) {
     if (clientes[i].getUsername() == username) {

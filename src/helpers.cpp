@@ -4,7 +4,7 @@
 #include "Store.h"
 
 Book createBook() {
-    std::cout << "************" << "CREANDO NUEVO LIBRO" << "************" << std::endl;
+    std::cout << "************" << " CREANDO NUEVO LIBRO " << "************" << std::endl;
     int pages;
     float price;
     std::string title, genero, autor;

@@ -33,7 +33,7 @@ class Store {
         
         const std::vector<Storage> & getStorage();
 
-        const Cliente & getCliente(std::string username, std::string password);
+        Cliente & getCliente(std::string username, std::string password);
 
 };
 #endif

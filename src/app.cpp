@@ -7,10 +7,10 @@ void userApp(Cliente & user);
 void MainApp(Cliente & user);
 void adminApp(Cliente & user);
 
+// Inicializar la instancia de la tienda
 Store store;
 
 int main(void) {
-    bool running = true;
     int option;
     bienvenida();
 
@@ -24,7 +24,7 @@ int main(void) {
         case 1:
             credentials = getCredentials();
             if (store.verifyLogin(credentials[0], credentials[1])) {
-                Cliente actual_user = store.getCliente(credentials[0], credentials[1]);
+                Cliente &actual_user = store.getCliente(credentials[0], credentials[1]);
                 // Iniciar el programa
                 MainApp(actual_user);
             }
@@ -50,15 +50,20 @@ void MainApp(Cliente & user) {
         std::vector<std::string> text = {"Ver Perfil", "Entrar a interfaz de admin"};
         showText(text);
         int option = choose();
+
         std::string pass;
         switch (option) {
             case 1:
+                std::cout << "****** CHECK FOR ERROS: ********\n";
+                user.showCliente();
                 userApp(user);
                 break;
             case 2:
                 std::cout << "Escribe la contraseña de administrador: ";
                 std::cin >> pass;
                 if (pass == store.getAdminPassword()) {
+                    std::cout << "****** CHECK FOR ERROS: ********\n";
+                    user.showCliente();
                     adminApp(user);
                 }
                 else {
