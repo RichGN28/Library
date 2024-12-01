@@ -141,7 +141,7 @@ void Store::expandInventory() {
 
 void Store::createNewValve() {
     std::string bodega;
-    std::cout << "Escoge el genero de tu bodega: ";
+    std::cout << "Escoge el genero de tu bodega(Una palabra): ";
     std::cin >> bodega;
     Storage valve(bodega);
     almacen.push_back(valve);

@@ -9,6 +9,8 @@ void delimiter(std::string _, int len);
 std::vector<std::string> getCredentials();
 void bienvenida();
 
+void clearBuffer();
+
 void showText(std::vector<std::string> text);
 
 void opcionesMain();

@@ -3,6 +3,10 @@
 
 #include "Store.h"
 
+void clearBuffer() {
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
 Book createBook() {
     std::cout << "************" << " CREANDO NUEVO LIBRO " << "************" << std::endl;
     int pages;
@@ -10,6 +14,7 @@ Book createBook() {
     std::string title, genero, autor;
 
     std::cout << "Titulo del libro: ";
+    clearBuffer();
     std::getline(std::cin, title);
 
     std::cout << "Paginas: ";
@@ -18,7 +23,10 @@ Book createBook() {
     std::cout << "Precio: ";
     std::cin >> price;
 
+    clearBuffer();
+
     std::cout << "Genero: ";
+    
     std::getline(std::cin, genero);
 
     std::cout << "Autor: ";
