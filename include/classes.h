@@ -68,6 +68,8 @@ class Cliente {
 
         // GETTERS
         const std::string & getUsername();
+        // Setters
+        void setBalance();
 };
 
 
@@ -90,14 +92,19 @@ class Store {
         std::string name;
         std::vector<Storage> almacen;
         std::vector<Cliente> clientes;
+        std::string adminPassword = "admin123";
     public:
         Store();
+
+        std::string getAdminPassword();
         
         bool registrarse();
 
-        bool login(std::string username, std::string password);
+        bool verifyLogin(std::string username, std::string password);
         const std::vector<Cliente> & getClients();
         void showClients();
+
+        const Cliente & getCliente(std::string username, std::string password);
 
 };
 #endif

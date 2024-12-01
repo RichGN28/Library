@@ -8,6 +8,13 @@ void delimiter(std::string _, int len) {
     std::cout << std::endl;
 }
 
+int choose() {
+    delimiter("*-", 50);
+    std::cout << "Que desea hacer: ";
+    int option;
+    std::cin >> option; 
+    return option;
+}
 
 void bienvenida() {
     std::cout << "******** " <<"Bienvenido a la libreria de libros!" << " ********" << std::endl;

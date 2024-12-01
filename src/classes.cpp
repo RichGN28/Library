@@ -121,7 +121,6 @@ bool Cliente::validatePassword(std::string pass) {
 void Cliente::showCliente() {
     std::cout << "Usuario: " << username << std::endl;
     std::cout << "Balance: " << balance << std::endl;
-    showBooksOwned();
 }
 
 void Cliente::buyBooks() {
@@ -149,6 +148,13 @@ void Cliente::showBooksOwned() {
     }
 }
 
+void Cliente::setBalance() {
+    std::cout << "Cuanto dinero quieres depositar: ";
+    double newBalance;
+    std::cin >> newBalance;
+    this->balance = newBalance;
+    std::cout << "$" << newBalance << "Anadidos" << std::endl;
+}
 
 // STORAGE
 Storage::Storage(std::string genero) {
@@ -167,60 +173,80 @@ const std::string Storage::getGenero() {
 
 
 // STORE
-        Store::Store() {
-            name = "Libreria de libros";
-        }
-        
-        bool Store::registrarse() {
-            std::vector<std::string> credentials;
-            credentials = getCredentials();
-            std::cout << "Escribe tu contraseña nuevamente" << std::endl;
-            
-            std::string password2;
-            std::cin >> password2;
-            
-            if (password2 != credentials[1]) {
-                std::cout << "Las contrasenas no coinciden" << std::endl;
-                std::cout << "Registro invalido" << std::endl;
+Store::Store() {
+    name = "Libreria de libros";
+}
+
+bool Store::registrarse() {
+    std::vector<std::string> credentials;
+    credentials = getCredentials();
+    std::cout << "Escribe tu contraseña nuevamente" << std::endl;
+    
+    std::string password2;
+    std::cin >> password2;
+    
+    if (password2 != credentials[1]) {
+        std::cout << "Las contrasenas no coinciden" << std::endl;
+        std::cout << "Registro invalido" << std::endl;
+        delimiter("-", 50);
+        return false;
+    }
+    Cliente user(credentials[0], credentials[1]);
+    clientes.push_back(user);
+    std::cout << "Registrado Correctamente" << std::endl;
+    delimiter("-", 50);
+    return true;
+}
+
+
+
+bool Store::verifyLogin(std::string username, std::string password) {
+    // Check if my vector contains the inputs
+    int index = 0;
+    for (int i = 0, size = clientes.size(); i < size; i++) {
+        if (clientes[i].getUsername() == username) {
+            if(clientes[i].validatePassword(password)) {
+                std::cout << "Login satisfactorio" << std::endl;
                 delimiter("-", 50);
-                return false;
+                return true;
             }
-            Cliente user(credentials[0], credentials[1]);
-            clientes.push_back(user);
-            std::cout << "Registrado Correctamente" << std::endl;
-            delimiter("-", 50);
-            return true;
         }
+    }
+    std::cout << "No se encontro el perfil" << std::endl;
+    delimiter("-", 50);
+    return false;
+}
 
-        bool Store::login(std::string username, std::string password) {
-            // Check if my vector contains the inputs
-            int index = 0;
-            for (int i = 0, size = clientes.size(); i < size; i++) {
-                if (clientes[i].getUsername() == username) {
-                    if(clientes[i].validatePassword(password)) {
-                        std::cout << "Login satisfactorio" << std::endl;
-                        delimiter("-", 50);
-                        return true;
-                    }
-                }
-            }
-            std::cout << "No se encontro el perfil" << std::endl;
-            delimiter("-", 50);
-            return false;
-        }
+const std::vector<Cliente> & Store::getClients() {
+    return this->clientes;
+}
 
-        const std::vector<Cliente> & Store::getClients() {
-            return this->clientes;
+const Cliente & Store::getCliente(std::string username, std::string password) {
+    int index = 0;
+    for (int i = 0, size = clientes.size(); i < size; i++) {
+    if (clientes[i].getUsername() == username) {
+        if(clientes[i].validatePassword(password)) {
+            index = i;
+            break;
         }
-        void Store::showClients() {
-            int size = clientes.size();
-            if (!size) {
-                std::cout << "No hay clientes actualmente :(" << std::endl;
-                return;
-            }
-            std::cout << "***** CLIENTES ACTUALES *****" << std::endl;
-            for (int i = 0; i < size; i++) {
-                clientes[i].showCliente();
-                delimiter("-*", 50);
-            }
-        }
+    }
+}
+return clientes[index];
+}
+
+std::string Store::getAdminPassword() {
+    return this->adminPassword;
+}
+
+void Store::showClients() {
+    int size = clientes.size();
+    if (!size) {
+        std::cout << "No hay clientes actualmente :(" << std::endl;
+        return;
+    }
+    std::cout << "***** CLIENTES ACTUALES *****" << std::endl;
+    for (int i = 0; i < size; i++) {
+        clientes[i].showCliente();
+        delimiter("-*", 50);
+    }
+}
