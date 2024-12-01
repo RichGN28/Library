@@ -4,6 +4,8 @@
 #include "Storage.h"
 #include "Cliente.h"
 
+#include <string>
+
 class Store {
     private:
 
@@ -15,25 +17,26 @@ class Store {
     public:
         Store();
 
+        // GETTERS
+        Cliente & getCliente(std::string username, std::string password);
+        const std::vector<Storage> & getStorage();
         std::string getAdminPassword();
+        const std::vector<Cliente> & getClients();
+        
+        // SETTERS
+        void setAdminPassword();
         
         bool registrarse();
-
         void createNewValve();
-
-        void createStorage();
-
         bool verifyLogin(std::string username, std::string password);
-        const std::vector<Cliente> & getClients();
+        
         void showClients();
-
         void showEntireAlmacen();
-
         void expandInventory();
         
-        const std::vector<Storage> & getStorage();
+        
 
-        Cliente & getCliente(std::string username, std::string password);
+        
 
 };
 #endif

@@ -54,16 +54,12 @@ void MainApp(Cliente & user) {
         std::string pass;
         switch (option) {
             case 1:
-                std::cout << "****** CHECK FOR ERROS: ********\n";
-                user.showCliente();
                 userApp(user);
                 break;
             case 2:
                 std::cout << "Escribe la contraseña de administrador: ";
                 std::cin >> pass;
                 if (pass == store.getAdminPassword()) {
-                    std::cout << "****** CHECK FOR ERROS: ********\n";
-                    user.showCliente();
                     adminApp(user);
                 }
                 else {
@@ -78,6 +74,7 @@ void MainApp(Cliente & user) {
 }
 
 void adminApp(Cliente & user) {
+    delimiter("-", 60);
     while (true) {
             std::vector<std::string> text = {"Agregar Libros", "Crear nueva bodega", "Mostrar Estanterias", "Mostrar Clientes",
              "Cambiar contraseña de admin"};
@@ -100,6 +97,9 @@ void adminApp(Cliente & user) {
                 break;
             case 4:
                 store.showClients();
+                break;
+            case 5:
+                store.setAdminPassword();
                 break;
             default:
                 std::cout << "Opcion no valida, inenta de nuevo" << std::endl;

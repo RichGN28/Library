@@ -10,7 +10,7 @@ Book createBook() {
     std::string title, genero, autor;
 
     std::cout << "Titulo del libro: ";
-    std::cin >> title;
+    std::getline(std::cin, title);
 
     std::cout << "Paginas: ";
     std::cin >> pages;
@@ -19,10 +19,10 @@ Book createBook() {
     std::cin >> price;
 
     std::cout << "Genero: ";
-    std::cin >> genero;
+    std::getline(std::cin, genero);
 
     std::cout << "Autor: ";
-    std::cin >> autor;
+    std::getline(std::cin, autor);
     Book book(pages, price, title, genero, autor);
 
     return book;
@@ -41,6 +41,7 @@ int choose() {
     int option;
     std::cin >> option; 
     return option;
+    std::cin.ignore();
 }
 
 void bienvenida() {

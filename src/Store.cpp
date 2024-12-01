@@ -4,9 +4,32 @@
 #include "helpers.h"
 #include "Store.h"
 
+
 // STORE
 Store::Store() {
     name = "Libreria de libros";
+}
+
+
+void Store::setAdminPassword() {
+    std::string check, newPass, newPassCheck;
+    std::cout << "\nAntigua Contrasena: ";
+    std::cin >> check;
+    if (check != adminPassword) {
+        std::cout << "\nContraseña incorrecta\n";
+        return;
+    }
+    std::cout << "\nNueva Contraseña: ";
+    std::cin >> newPass;
+
+    std::cout << "\nReescribe la contraseña Contraseña: ";
+    std::cin >> newPassCheck;
+    if (newPass != newPassCheck) {
+        std::cout << "\nLas constrasenas no coinciden\n";
+    }
+    this->adminPassword = newPass;
+    std::cout << "Constraseña de administrador cambiada satisfactoriamente" << std::endl;
+    delimiter("-", 60);
 }
 
 bool Store::registrarse() {
@@ -83,13 +106,7 @@ void Store::showClients() {
     }
 }
 
-void Store::createStorage() {
-    std::string genero;
-    std::cout << "Genero de la nueva bodega: ";
-    std::cin >> genero;
-    Storage bodega(genero);
-    almacen.push_back(bodega);
-}
+
 
 void Store::expandInventory() {
     // This method adds a new book to the desire valve
@@ -130,8 +147,6 @@ void Store::createNewValve() {
     almacen.push_back(valve);
     std::cout << "Bogeda Creada Satisfactoriamente" << std::endl;
 }
-
-
 
 const std::vector<Storage> & Store::getStorage() {
     return this->almacen;
