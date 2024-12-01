@@ -2,6 +2,7 @@
 #define HELPERS_H
 
 #include <iostream>
+class Book;
 
 void delimiter(std::string _, int len);
 
@@ -15,4 +16,7 @@ void opcionesMain();
 void opcionesCarrito();
 
 int choose();
+
+Book createBook();
+
 #endif

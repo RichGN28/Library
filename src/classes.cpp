@@ -3,6 +3,7 @@
 
 #include "helpers.h"
 #include "classes.h"
+#include <algorithm>
 
 
 // BOOK
@@ -164,13 +165,27 @@ Storage::Storage(std::string genero) {
 void Storage::emptyStorage() {
     valve.clear();
 }
-const std::map<Book, int> & Storage::getValve() {
+const std::vector<Book> & Storage::getValve() {
     return valve;
 }
 const std::string Storage::getGenero() {
     return genero;
 }
 
+void Storage::showBooks() {
+    for (auto it = valve.begin(); it != valve.end(); it++) {
+        it->showBook();
+    }
+}
+
+void Storage::showValve() {
+    delimiter("*", 75);
+    std::cout << "Genero del almacen: " << genero << std::endl;
+    std::cout << "Espacio Disponible: " << maximum_capacity - valve.size() << std::endl;
+    // OJITO AQUI QUE ESOTY MOSTRANDO TODOS LOS LIBROS SIEMPRE
+    // showBooks();
+
+}
 
 // STORE
 Store::Store() {
@@ -248,5 +263,69 @@ void Store::showClients() {
     for (int i = 0; i < size; i++) {
         clientes[i].showCliente();
         delimiter("-*", 50);
+    }
+}
+
+void Store::createStorage() {
+    std::string genero;
+    std::cout << "Genero de la nueva bodega: ";
+    std::cin >> genero;
+    Storage bodega(genero);
+    almacen.push_back(bodega);
+}
+
+void Store::expandInventory() {
+    // This method adds a new book to the desire valve
+    int almacen_size = almacen.size();
+    if (almacen_size) {
+        Book book = createBook();
+        
+        showEntireAlmacen();
+        std::cout << "Escoge un almacen para guardar tu libro (por el nombre del genero): ";
+        std::string generoChoose;
+        std::cin >> generoChoose;
+
+        bool correctAdd = false;
+        for (int i = 0; i < almacen_size; i++) {
+            if (almacen[i].getGenero() == generoChoose) {
+                almacen[i].addBookToValve(book);
+                correctAdd = true;
+                break;
+            }
+        }
+        correctAdd ? std::cout << "Libro agregado satisfactoriamente" << std::endl : 
+        std::cout << "No existe una estanteria con ese nombre" << std::endl;
+    }
+    else {
+        std::cout << "No hay ninguna estanteria disponible" << std::endl;
+        delimiter("-", 70);
+    }
+
+
+}
+
+
+void Store::createNewValve() {
+    std::string bodega;
+    std::cout << "Escoge el genero de tu bodega: ";
+    std::cin >> bodega;
+    Storage valve(bodega);
+    almacen.push_back(valve);
+    std::cout << "Bogeda Creada Satisfactoriamente" << std::endl;
+}
+
+void Storage::addBookToValve(Book book) {
+    valve.push_back(book);
+}
+
+const std::vector<Storage> & Store::getStorage() {
+    return this->almacen;
+}
+
+void Store::showEntireAlmacen() {
+    std::cout << "*-*-*-*-*-*-*-*-*-" << "MOSTRANDO EL ALMACEN" << "*-*-*-*-*-*-*-*-*-" << std::endl;
+    int almcenSize = almacen.size();
+    for (int i = 0; i < almcenSize; i++) {
+        almacen[i].showValve();
     }
 }

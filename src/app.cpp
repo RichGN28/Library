@@ -74,10 +74,28 @@ void MainApp(Cliente & user) {
 
 void adminApp(Cliente & user) {
     while (true) {
-            std::vector<std::string> text = {"Agregar Libros", "Mostrar Clientes",
+            std::vector<std::string> text = {"Agregar Libros", "Crear nueva bodega", "Mostrar Estanterias", "Mostrar Clientes",
              "Cambiar contraseña de admin"};
             showText(text);
             int option = choose();
+            switch (option)
+            {
+            case -1:
+                return;
+            case 1:
+                // Agregar libros
+                store.expandInventory();
+                break;
+
+            case 2:
+                store.createNewValve();
+                break;
+            case 3:
+                store.showEntireAlmacen();
+            default:
+                std::cout << "Opcion no valida, inenta de nuevo" << std::endl;
+                break;
+            }
     }
 }
 

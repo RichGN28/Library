@@ -76,23 +76,27 @@ class Cliente {
 class Storage {
     private:
         int maximum_capacity;
-        std::map<Book, int> valve;
+        std::vector<Book> valve;
         std::string genero;
     public:
         Storage(std::string genero);
         void emptyStorage();
-        const std::map<Book, int> & getValve();
+        const std::vector<Book> & getValve();
         const std::string getGenero();
+        void showValve();
+        void showBooks();
+        void addBookToValve(Book book);
 
 };
 
 class Store {
     private:
-    //Think about a store method
+
         std::string name;
         std::vector<Storage> almacen;
         std::vector<Cliente> clientes;
         std::string adminPassword = "admin123";
+
     public:
         Store();
 
@@ -100,9 +104,19 @@ class Store {
         
         bool registrarse();
 
+        void createNewValve();
+
+        void createStorage();
+
         bool verifyLogin(std::string username, std::string password);
         const std::vector<Cliente> & getClients();
         void showClients();
+
+        void showEntireAlmacen();
+
+        void expandInventory();
+        
+        const std::vector<Storage> & getStorage();
 
         const Cliente & getCliente(std::string username, std::string password);
 
