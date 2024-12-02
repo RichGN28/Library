@@ -11,9 +11,6 @@ void carritoApp(Cliente & user);
 
 // Inicializar la instancia de la tienda
 Store store;
-
-
-
 int main(void) {
     int option;
     bienvenida();
