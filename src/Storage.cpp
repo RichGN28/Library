@@ -8,7 +8,7 @@ Storage::Storage(std::string genero) {
 void Storage::emptyStorage() {
     valve.clear();
 }
-const std::vector<Book> & Storage::getValve() {
+std::vector<Book> & Storage::getValve() {
     return valve;
 }
 const std::string Storage::getGenero() {
@@ -30,6 +30,6 @@ void Storage::showValve() {
     std::cout << "Genero del almacen: " << genero << std::endl;
     std::cout << "Espacio Disponible: " << maximum_capacity - valve.size() << std::endl;
     // OJITO AQUI QUE ESOTY MOSTRANDO TODOS LOS LIBROS SIEMPRE
-    // showBooks();
+    showBooks();
 
 }

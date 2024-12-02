@@ -11,6 +11,7 @@ class Store {
 
         std::string name;
         std::vector<Storage> almacen;
+
         std::vector<Cliente> clientes;
         std::string adminPassword = "admin123";
 
@@ -19,9 +20,10 @@ class Store {
 
         // GETTERS
         Cliente & getCliente(std::string username, std::string password);
-        const std::vector<Storage> & getStorage();
+        std::vector<Storage> & getStorage();
         std::string getAdminPassword();
         const std::vector<Cliente> & getClients();
+        std::vector<Storage> &getCopiaAlmacen();
         
         // SETTERS
         void setAdminPassword();

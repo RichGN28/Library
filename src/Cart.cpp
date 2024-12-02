@@ -1,5 +1,5 @@
 #include "Cart.h"
-
+#include "helpers.h"
 Cart::Cart() {
     total = 0;
 }
@@ -29,6 +29,12 @@ void Cart::removeItem() {
     std::cout << "Escoge un libro para eliminar de tu carrito: " 
     << std::endl;
     std::string remove;
+    if (!books.size()) {
+        std::cout << "Carrito Vacio" << std::endl;
+        return;
+    }
+    clearBuffer();
+
     std::getline(std::cin, remove);
 
     for (auto it = books.begin(); it != books.end(); it++) {
