@@ -19,6 +19,7 @@ int main(void) {
         switch (option)
         {
         case 1:
+            // INICIAR SESION
             credentials = getCredentials();
             if (store.verifyLogin(credentials[0], credentials[1])) {
                 Cliente &actual_user = store.getCliente(credentials[0], credentials[1]);
@@ -27,6 +28,7 @@ int main(void) {
             }
             break;
         case 2:
+            // REGIRTRARSE
             store.registrarse();
             break;
         

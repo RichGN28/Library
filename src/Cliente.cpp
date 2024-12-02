@@ -68,7 +68,7 @@ void Cliente::setBalance() {
     std::cout << "Cuanto dinero quieres depositar: ";
     double newBalance;
     std::cin >> newBalance;
-    this->balance = newBalance;
+    this->balance += newBalance;
     std::cout << "$" << newBalance << " Anadidos" << std::endl;
     delimiter("-", ESPACIADO);
 }
