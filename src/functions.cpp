@@ -17,6 +17,8 @@ void MainApp(Cliente & user) {
 
         std::string pass;
         switch (option) {
+            case -1:
+                return;
             case 1:
                 userApp(user);
                 break;

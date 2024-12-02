@@ -18,6 +18,9 @@ int main(void) {
         std::vector <std::string> credentials;
         switch (option)
         {
+        case -1:
+            std::cout << "No puedes regresar en este menu\n";
+            break;
         case 1:
             // INICIAR SESION
             credentials = getCredentials();
