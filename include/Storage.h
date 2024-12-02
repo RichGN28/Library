@@ -12,7 +12,7 @@ class Storage {
     public:
         Storage(std::string genero);
         void emptyStorage();
-        const std::vector<Book> & getValve();
+        std::vector<Book> & getValve();
         const std::string getGenero();
         void showValve();
         void showBooks();

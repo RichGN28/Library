@@ -1,5 +1,7 @@
 #include "Cliente.h"
 
+#include "Storage.h"
+
 Cliente::Cliente(std::string username, std::string password) {
     this->username = username;
     this->password = password;
@@ -20,18 +22,31 @@ void Cliente::showCliente() {
     std::cout << "Balance: " << balance << std::endl;
 }
 
-void Cliente::buyBooks() {
+void Cliente::buyBooks(std::vector<Storage> & almacen) {
     int total = cart.getTotal();
     if (balance < total) {
         std::cout << "Insuficiente fondos" << std::endl;
         return;
     }
-    const std::vector<Book> ref = cart.getCart();
-    for (auto it = ref.begin(); it != ref.end(); it++) {
-        owned.push_back(*it);
+    const std::vector<Book> &carrito = cart.getCart();
+    for (int k = 0, sizeCarrito = carrito.size(); k <sizeCarrito; k++) {
+        // Agregar a comprados
+        Book book = carrito[k];
+        owned.push_back(book);
+        for (int i = 0, size = almacen.size(); i < size; i++) {
+            std::vector<Book>&estanteria = almacen[i].getValve();
+            for (int j = 0, sizeEstanteria = estanteria.size(); j < sizeEstanteria; j++) {
+                if (estanteria[j].getTitle() == book.getTitle()) {
+                    estanteria.erase(estanteria.begin() + j);
+                    break;
+                }
+            }
+        }
+
     }
     balance -= total;
     cart.empty();
+    std::cout << "Libros comprados satisfactoriamente" << std::endl;
 }
 
 void Cliente::showBooksOwned() {
@@ -51,4 +66,8 @@ void Cliente::setBalance() {
     std::cin >> newBalance;
     this->balance = newBalance;
     std::cout << "$" << newBalance << "Anadidos" << std::endl;
+}
+
+Cart & Cliente::getCart() {
+    return this->cart;
 }

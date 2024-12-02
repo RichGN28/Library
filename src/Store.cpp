@@ -148,9 +148,10 @@ void Store::createNewValve() {
     std::cout << "Bogeda Creada Satisfactoriamente" << std::endl;
 }
 
-const std::vector<Storage> & Store::getStorage() {
+std::vector<Storage> & Store::getStorage() {
     return this->almacen;
 }
+
 
 void Store::showEntireAlmacen() {
     std::cout << "*-*-*-*-*-*-*-*-*-" << "MOSTRANDO EL ALMACEN" << "*-*-*-*-*-*-*-*-*-" << std::endl;

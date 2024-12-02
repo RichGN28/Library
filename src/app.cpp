@@ -6,9 +6,13 @@
 void userApp(Cliente & user);
 void MainApp(Cliente & user);
 void adminApp(Cliente & user);
+void addBooksToCart(Cliente & user);
+void carritoApp(Cliente & user);
 
 // Inicializar la instancia de la tienda
 Store store;
+
+
 
 int main(void) {
     int option;
@@ -114,7 +118,7 @@ del cliente y su información
 void userApp(Cliente & user) {
     while (true) {
         std::vector<std::string> text = {"Mostrar Perfil", "Anadir fondos",
-        "Mostar Libros Comprados", "Ir a carrito"};
+        "Mostar Libros Comprados", "Agregar Libros Al Carrito","Ir a carrito"};
         showText(text);
         int option = choose();
 
@@ -134,8 +138,11 @@ void userApp(Cliente & user) {
             user.showBooksOwned();
             break;
         case 4:
+            addBooksToCart(user);
+            break;
+        case 5:
             // Ir a carrito
-            carritoApp();
+            carritoApp(user);
             break;
         default:
             
@@ -147,12 +154,56 @@ void userApp(Cliente & user) {
 
 }
 
-void carritoApp() {
+void addBooksToCart(Cliente & user) {
+    Cart &cart = user.getCart();
+    store.showEntireAlmacen();
+    std::cout << "Que libro desea agregar al carrito: ";
+    std::string bookToAdd;
+    clearBuffer();
+    std::getline(std::cin, bookToAdd);
+    
+    std::vector<Storage> &almacen = store.getStorage();
+
+    for (int i = 0, size = almacen.size(); i < size; i++) {
+        std::vector<Book> &estanteria = almacen[i].getValve();
+        for (int j = 0,sizeEstanteria = estanteria.size(); j < sizeEstanteria; j++) {
+            // Si encuentra el libro haz esto
+            if (estanteria[j].getTitle() == bookToAdd) {
+                cart.addItem(estanteria[j]);
+                return;
+            }
+        }
+    }
+}
+
+void carritoApp(Cliente & user) {
     while (true) {
-        std::vector<std::string> text = {"Mostrar Carrito", "Borrar Item", 
+        std::vector<std::string> text = {"Comprar Libros","Mostrar Carrito", "Borrar Item", 
         "Vaciar Carrito"};
+        Cart &cart = user.getCart();
         showText(text);
         int option = choose();
 
+        switch (option)
+        {
+        case -1:
+            return;
+        case 1:
+            //Comprar libros
+            user.buyBooks(store.getStorage());
+            break;
+        case 2:
+            cart.showCart();
+            break;
+        case 3:
+            cart.removeItem();
+            break;
+        case 4:
+            cart.empty();
+        default:
+            break;
+        }
+
     }   
 }
+
