@@ -8,10 +8,8 @@
 
 class Store {
     private:
-
         std::string name;
         std::vector<Storage> almacen;
-
         std::vector<Cliente> clientes;
         std::string adminPassword = "admin123";
 
@@ -23,15 +21,14 @@ class Store {
         std::vector<Storage> & getStorage();
         std::string getAdminPassword();
         const std::vector<Cliente> & getClients();
-        std::vector<Storage> &getCopiaAlmacen();
         
         // SETTERS
         void setAdminPassword();
         
+        // METHODS
         bool registrarse();
         void createNewValve();
         bool verifyLogin(std::string username, std::string password);
-        
         void showClients();
         void showEntireAlmacen();
         void expandInventory();

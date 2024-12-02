@@ -8,13 +8,13 @@ void clearBuffer() {
 }
 
 Book createBook() {
-    std::cout << "************" << " CREANDO NUEVO LIBRO " << "************" << std::endl;
+    std::cout << std::endl << "************" << " CREANDO NUEVO LIBRO " << "************" << std::endl;
     int pages;
     float price;
     std::string title, genero, autor;
-
+    // clearBuffer();
     std::cout << "Titulo del libro: ";
-    clearBuffer();
+
     std::getline(std::cin, title);
 
     std::cout << "Paginas: ";
@@ -48,16 +48,18 @@ int choose() {
     std::cout << "Que desea hacer: ";
     int option;
     std::cin >> option; 
-    return option;
+    delimiter("*-", 50);
     std::cin.ignore();
+    return option;
 }
 
 void bienvenida() {
-    std::cout << "******** " <<"Bienvenido a la libreria de libros!" << " ********" << std::endl;
+    std::cout << std::endl << "******** " <<"Bienvenido a la libreria de libros!" << " ********" << std::endl;
     std::cout << "Donde solo vendemos libros y mas libros y otros cuantos libros" << std::endl;
-    delimiter("-", 50);
+    delimiter("-", 75);
     std::cout << "Para interactuar con el menu, simplemente escrbe el numero del menu al que quieres acceder" << std::endl;
-    std::cout << "-1. Volver a la interfaz anterior" << std::endl;
+    std::cout << "Escribe -1 para volver a la interfaz anterior" << std::endl;
+    delimiter(".", 70);
 }
 
 

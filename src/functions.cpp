@@ -117,9 +117,8 @@ void userApp(Cliente & user) {
 void addBooksToCart(Cliente & user) {
     Cart &cart = user.getCart();
     store.showEntireAlmacen();
-    std::cout << "Que libro desea agregar al carrito: ";
+    std::cout << std::endl <<"Que libro desea agregar al carrito: ";
     std::string bookToAdd;
-    clearBuffer();
     std::getline(std::cin, bookToAdd);
     
     std::vector<Storage> &almacen = store.getStorage();

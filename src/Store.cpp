@@ -4,6 +4,7 @@
 #include "helpers.h"
 #include "Store.h"
 
+#define ESPACIADO 70
 
 // STORE
 Store::Store() {
@@ -28,8 +29,8 @@ void Store::setAdminPassword() {
         std::cout << "\nLas constrasenas no coinciden\n";
     }
     this->adminPassword = newPass;
-    std::cout << "Constraseña de administrador cambiada satisfactoriamente" << std::endl;
-    delimiter("-", 60);
+    std::cout << "CONTRASENA CAMBIADA SATISFACTORIAMENTE" << std::endl;
+    delimiter("-", ESPACIADO);
 }
 
 bool Store::registrarse() {
@@ -43,13 +44,13 @@ bool Store::registrarse() {
     if (password2 != credentials[1]) {
         std::cout << "Las contrasenas no coinciden" << std::endl;
         std::cout << "Registro invalido" << std::endl;
-        delimiter("-", 50);
+        delimiter("-", ESPACIADO);
         return false;
     }
     Cliente user(credentials[0], credentials[1]);
     clientes.push_back(user);
     std::cout << "Registrado Correctamente" << std::endl;
-    delimiter("-", 50);
+    delimiter("-", ESPACIADO);
     return true;
 }
 
@@ -61,14 +62,14 @@ bool Store::verifyLogin(std::string username, std::string password) {
     for (int i = 0, size = clientes.size(); i < size; i++) {
         if (clientes[i].getUsername() == username) {
             if(clientes[i].validatePassword(password)) {
-                std::cout << "Login satisfactorio" << std::endl;
+                std::cout << std::endl << "INICIO DE SESION SATISFACTORIO" << std::endl;
                 delimiter("-", 50);
                 return true;
             }
         }
     }
     std::cout << "No se encontro el perfil" << std::endl;
-    delimiter("-", 50);
+    delimiter("-", ESPACIADO);
     return false;
 }
 
@@ -102,7 +103,7 @@ void Store::showClients() {
     std::cout << "***** CLIENTES ACTUALES *****" << std::endl;
     for (int i = 0; i < size; i++) {
         clientes[i].showCliente();
-        delimiter("-*", 50);
+        delimiter(".", ESPACIADO);
     }
 }
 
@@ -127,12 +128,14 @@ void Store::expandInventory() {
                 break;
             }
         }
-        correctAdd ? std::cout << "Libro agregado satisfactoriamente" << std::endl : 
+        correctAdd ? std::cout << std::endl <<"LIBRO AGREGADO SATISFACTORIAMENTE" << std::endl : 
         std::cout << "No existe una estanteria con ese nombre" << std::endl;
+        delimiter("-", ESPACIADO);
+
     }
     else {
         std::cout << "No hay ninguna estanteria disponible" << std::endl;
-        delimiter("-", 70);
+        delimiter("-", ESPACIADO);
     }
 
 
@@ -145,7 +148,8 @@ void Store::createNewValve() {
     std::cin >> bodega;
     Storage valve(bodega);
     almacen.push_back(valve);
-    std::cout << "Bogeda Creada Satisfactoriamente" << std::endl;
+    std::cout << std::endl << "BODEGA CREADA SATISFACTORIAMENTE" << std::endl;
+    delimiter("-", ESPACIADO);
 }
 
 std::vector<Storage> & Store::getStorage() {
@@ -154,7 +158,7 @@ std::vector<Storage> & Store::getStorage() {
 
 
 void Store::showEntireAlmacen() {
-    std::cout << "*-*-*-*-*-*-*-*-*-" << "MOSTRANDO EL ALMACEN" << "*-*-*-*-*-*-*-*-*-" << std::endl;
+    std::cout << "\n*-*-*-*-*-*-*-*-*-" << "MOSTRANDO EL ALMACEN" << "*-*-*-*-*-*-*-*-*-" << std::endl;
     int almcenSize = almacen.size();
     for (int i = 0; i < almcenSize; i++) {
         almacen[i].showValve();
