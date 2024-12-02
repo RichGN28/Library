@@ -19,6 +19,7 @@ set(SOURCE_FILES
     src/Storage.cpp
     src/Store.cpp
     src/helpers.cpp
+    src/functions.cpp
 
 )
 
