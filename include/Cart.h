@@ -15,6 +15,10 @@ class Cart {
 
     public:
         Cart();
+        
+        // GETTERS SETTERS
+        const std::vector<Book>& getCart();
+        const int & getTotal();
 
         // METHODS
         void showCart();
@@ -23,9 +27,6 @@ class Cart {
         void empty();
 
 
-        // GETTERS SETTERS
-        const std::vector<Book>& getCart();
-        const int & getTotal();
 
 };
 

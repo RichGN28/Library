@@ -21,13 +21,13 @@ class Book {
         Book(int pages, float price, std::string title, std::string genero, 
              std::string autor);
 
+        // GETTERS AND SETTERS
+        float getPrice();
+        std::string getTitle();
 
         void showBook();
         void readBook();
 
-        // GETTERS AND SETTERS
-        float getPrice();
-        std::string getTitle();
 };
 
 #endif

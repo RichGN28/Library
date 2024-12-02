@@ -1,6 +1,8 @@
 #include "helpers.h"
 #include "Storage.h"
 
+#define ESPACIADO 70
+
 Storage::Storage(std::string genero) {
     this->genero = genero;
     this->maximum_capacity = 15;
@@ -26,10 +28,9 @@ void Storage::addBookToValve(Book book) {
 }
 
 void Storage::showValve() {
-    delimiter("*", 75);
     std::cout << "Genero del almacen: " << genero << std::endl;
     std::cout << "Espacio Disponible: " << maximum_capacity - valve.size() << std::endl;
-    // OJITO AQUI QUE ESOTY MOSTRANDO TODOS LOS LIBROS SIEMPRE
-    showBooks();
 
+    showBooks();
+    delimiter("*", ESPACIADO);
 }

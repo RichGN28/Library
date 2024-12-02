@@ -1,7 +1,6 @@
 #ifndef CLIENTE_U
 #define CLIENTE_U
 
-
 #include <vector>
 #include "Book.h"
 #include "Cart.h"
@@ -19,17 +18,16 @@ class Cliente {
     public:
         Cliente(std::string username, std::string password);
 
+        // GETTERS AND SETTERS
+        const std::string & getUsername();
+        Cart & getCart();
+        void setBalance();
+
         // METHODS
         bool validatePassword(std::string pass);
         void showCliente();
         void buyBooks(std::vector<Storage> & almacen);
         void showBooksOwned();
-
-        // GETTERS
-        const std::string & getUsername();
-        Cart & getCart();
-        // Setters
-        void setBalance();
 };
 
 #endif

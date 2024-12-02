@@ -10,10 +10,15 @@ class Storage {
         std::vector<Book> valve;
         std::string genero;
     public:
+        // CONSTRUCTORES
         Storage(std::string genero);
-        void emptyStorage();
+
+        // GETTERS AND SETTERS
         std::vector<Book> & getValve();
         const std::string getGenero();
+    
+        // METODOS
+        void emptyStorage();
         void showValve();
         void showBooks();
         void addBookToValve(Book book);

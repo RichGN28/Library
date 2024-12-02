@@ -1,6 +1,8 @@
 #include "Cliente.h"
-
 #include "Storage.h"
+#include "helpers.h"
+
+#define ESPACIADO 70
 
 Cliente::Cliente(std::string username, std::string password) {
     this->username = username;
@@ -20,6 +22,8 @@ bool Cliente::validatePassword(std::string pass) {
 void Cliente::showCliente() {
     std::cout << "Usuario: " << username << std::endl;
     std::cout << "Balance: " << balance << std::endl;
+    delimiter("-", ESPACIADO);
+
 }
 
 void Cliente::buyBooks(std::vector<Storage> & almacen) {
@@ -65,7 +69,8 @@ void Cliente::setBalance() {
     double newBalance;
     std::cin >> newBalance;
     this->balance = newBalance;
-    std::cout << "$" << newBalance << "Anadidos" << std::endl;
+    std::cout << "$" << newBalance << " Anadidos" << std::endl;
+    delimiter("-", ESPACIADO);
 }
 
 Cart & Cliente::getCart() {
